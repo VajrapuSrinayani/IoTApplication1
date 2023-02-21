@@ -8,7 +8,7 @@ namespace IoTApplication.Repository
 {
     public class PropertiesRepository : IUpdatePropertiesRepository
     {
-        private static string connectionString = "";
+        private static string connectionString = "HostName=iothub101.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=QFUY1oRXtl0Z+oBz9R5BxZvhm96ZTPvjeOiOgkAQm/c=";
 
         public PropertiesRepository()
         {
