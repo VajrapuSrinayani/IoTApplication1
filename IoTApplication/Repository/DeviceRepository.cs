@@ -10,7 +10,7 @@ namespace IoTApplication.Repository
     }
     public class DeviceRepository
     {
-        private static string connectionString = "HostName=iothub101.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=QFUY1oRXtl0Z+oBz9R5BxZvhm96ZTPvjeOiOgkAQm/c=";
+        private static string connectionString = "HostName=iothub101.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=tCxaeJBez3s8UrZjg28mIfjmXbzpjIuBir0ljBNP3P0=";
         private static RegistryManager registryManager;
 
         public DeviceRepository()
