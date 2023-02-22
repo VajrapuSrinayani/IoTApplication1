@@ -35,17 +35,19 @@ namespace IoTApplication.Controllers
 
         [HttpPut]
         [Route("update/{status}")]
-        public async Task UpdateDeviceStatusAsync(string deviceId, string status)
+        public async Task<string> UpdateDeviceStatusAsync(string deviceId, string status)
         {
-            await deviceRepository.UpdateDeviceStatusAsync(deviceId, status);
+            var result = await deviceRepository.UpdateDeviceStatusAsync(deviceId, status);
+            return result;
         }
 
         // DELETE
         [HttpDelete]
         [Route("delete/{deviceId}")]
-        public async Task DeleteDeviceAsync(string deviceId)
+        public async Task<string> DeleteDeviceAsync(string deviceId)
         {
-            await deviceRepository.DeleteDeviceAsync(deviceId);
+            var result = await deviceRepository.DeleteDeviceAsync(deviceId);
+            return result;
         }
     }
 }

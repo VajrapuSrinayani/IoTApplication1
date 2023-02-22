@@ -1,14 +1,10 @@
 ﻿using Microsoft.Azure.Devices;
-
 using IoTApplication.Models;
+using IoTApplication.Interface;
 
 namespace IoTApplication.Repository
 {
-    public interface IDeviceRepository
-    {
-        bool UpdateDeviceAsync(Device device);
-    }
-    public class DeviceRepository
+    public class DeviceRepository : IDeviceRepository
     {
         private static string connectionString = "HostName=iothub101.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=tCxaeJBez3s8UrZjg28mIfjmXbzpjIuBir0ljBNP3P0=";
         private static RegistryManager registryManager;
@@ -23,7 +19,7 @@ namespace IoTApplication.Repository
         {
             var device = new Device(IoTDevice.DeviceId);
             Device createdDevice = await registryManager.AddDeviceAsync(device);
-            return createdDevice.Authentication.SymmetricKey.PrimaryKey;
+            return $"Primary key: {createdDevice.Authentication.SymmetricKey.PrimaryKey}";
         }
 
         // READ
@@ -34,18 +30,20 @@ namespace IoTApplication.Repository
         }
 
         //UPDATE
-        public async Task UpdateDeviceStatusAsync(string deviceId, string status)
+        public async Task<string> UpdateDeviceStatusAsync(string deviceId, string status)
         {
             Device device = await registryManager.GetDeviceAsync(deviceId);
             device.Status = (DeviceStatus)Enum.Parse(typeof(DeviceStatus), status, true);
             await registryManager.UpdateDeviceAsync(device);
+            return $"Updated the {device.Status} of the device";
         }
 
 
         // DELETE
-        public async Task DeleteDeviceAsync(string deviceId)
+        public async Task<string> DeleteDeviceAsync(string deviceId)
         {
             await registryManager.RemoveDeviceAsync(deviceId);
+            return $"Deleted device with id: {deviceId}";
         }
     }
 }

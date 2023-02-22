@@ -50,6 +50,8 @@ namespace IoTApplication.Repository
 
                     await deviceClient.SendEventAsync(message);
 
+                    Console.WriteLine(messageString);
+
                     return "Telemetry data sent successfully";
                 }
                 catch (Exception ex)

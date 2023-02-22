@@ -4,6 +4,7 @@ using IoTApplication.Repository;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddTransient<IDeviceRepository, DeviceRepository>();
 builder.Services.AddTransient<IUpdatePropertiesRepository, PropertiesRepository>();
 builder.Services.AddControllers();
 builder.Services.AddCors(options =>
