@@ -34,15 +34,15 @@ namespace IoTApplication.Controllers
         [HttpPost("reported")]
         public async Task<IActionResult> UpdateReportedProperties(string deviceId, Properties updatePropertiesModel)
         {
-            await _updatePropertiesRepository.UpdateReportedProperties(deviceId, updatePropertiesModel);
-            return Ok();
+            var result = await _updatePropertiesRepository.UpdateReportedProperties(deviceId, updatePropertiesModel);
+            return Ok(result);
         }
 
         [HttpPost("desired")]
         public async Task<IActionResult> UpdateDesiredProperties(string deviceId, [FromBody] Properties updatePropertiesModel)
         {
-            await _updatePropertiesRepository.UpdateDesiredPropertiesAsync(deviceId, updatePropertiesModel);
-            return Ok();
+            var result = await _updatePropertiesRepository.UpdateDesiredPropertiesAsync(deviceId, updatePropertiesModel);
+            return Ok(result);
         }
     }
 }
