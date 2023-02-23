@@ -6,7 +6,7 @@ namespace IoTApplication.Repository
 {
     public class DeviceRepository : IDeviceRepository
     {
-        private static string connectionString = "HostName=iothub101.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=tCxaeJBez3s8UrZjg28mIfjmXbzpjIuBir0ljBNP3P0=";
+        private static string connectionString = "HostName=srinayaniiothub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=pGoLZGOJIhGR3XI/7C+rYDUp5BSGRHlEt1pITyz6LrQ=";
         private static RegistryManager registryManager;
 
         public DeviceRepository()
@@ -35,7 +35,7 @@ namespace IoTApplication.Repository
             Device device = await registryManager.GetDeviceAsync(deviceId);
             device.Status = (DeviceStatus)Enum.Parse(typeof(DeviceStatus), status, true);
             await registryManager.UpdateDeviceAsync(device);
-            return $"Updated the {device.Status} of the device";
+            return $"Updated the status of the device as {device.Status}";
         }
 
 
